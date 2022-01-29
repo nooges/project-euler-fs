@@ -14,7 +14,7 @@ let isPrime =
     | n ->
         let rec loop =
             function
-            | i when i * i >= n -> true
+            | i when i * i > n -> true
             | i when isMultiple i n || isMultiple (i + 2) n -> false
             | i -> loop (i + 6)
 
@@ -28,7 +28,7 @@ let isPrimeL =
     | n ->
         let rec loop =
             function
-            | i when i * i >= n -> true
+            | i when i * i > n -> true
             | i when isMultipleL i n || isMultipleL (i + 2L) n -> false
             | i -> loop (i + 6L)
 

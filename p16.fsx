@@ -14,6 +14,5 @@ open Common
 *)
 
 string (pown 2I 1000)
-|> Seq.map (fun c -> string c |> int)
-|> Seq.sum
+|> Seq.sumBy (string >> int)
 |> pp

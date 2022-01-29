@@ -1,5 +1,8 @@
 #!/usr/bin/env -S dotnet fsi
 
+#load "common.fsx"
+open Common
+
 (*
     Smallest multiple
 
@@ -9,8 +12,6 @@
 
     What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 *)
-
-let isMultiple a b = b % a = 0
 
 let isMultipleOfAll range n =
     range |> Seq.forall (fun a -> isMultiple a n)

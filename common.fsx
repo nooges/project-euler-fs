@@ -5,6 +5,7 @@ module Common
 let isMultiple a b = b % a = 0
 let isMultipleL a b = b % a = 0L
 let pp a = printfn "%A" a
+let ps s = printfn "%A" (s |> Seq.toArray)
 
 let isPrime =
     function
@@ -33,3 +34,19 @@ let isPrimeL =
             | i -> loop (i + 6L)
 
         loop 5
+
+let memoize fn =
+    let cache = new System.Collections.Generic.Dictionary<_, _>()
+
+    (fun x ->
+        match cache.TryGetValue x with
+        | true, v -> v
+        | false, _ ->
+            let v = fn (x)
+            cache.Add(x, v)
+            v)
+
+let digitSum n =
+    string (n)
+    |> Seq.map (fun c -> string (c) |> int)
+    |> Seq.sum

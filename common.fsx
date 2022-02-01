@@ -35,6 +35,8 @@ let isPrimeL =
 
         loop 5
 
+let primesUpTo n = seq { 2L .. n } |> Seq.filter isPrimeL
+
 let memoize fn =
     let cache = new System.Collections.Generic.Dictionary<_, _>()
 
@@ -50,3 +52,5 @@ let digitSum n =
     string (n)
     |> Seq.map (fun c -> string (c) |> int)
     |> Seq.sum
+
+let numDigits n = string n |> Seq.length

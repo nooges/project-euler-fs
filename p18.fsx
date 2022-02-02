@@ -33,8 +33,8 @@ let triangle =
     |> textToTriangle
 
 let combine a (b: int []) =
-    a
-    |> Array.mapi (fun i x -> x + max b.[i] b.[i + 1])
+    let bmax = b |> Array.windowed 2 |> Array.map Array.max
+    Array.map2 (+) a bmax
 
 let maxTriangleSum t =
     t |> Array.reduceBack combine |> Array.sum

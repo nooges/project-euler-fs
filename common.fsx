@@ -54,3 +54,5 @@ let digitSum n =
     |> Seq.sum
 
 let numDigits n = string n |> Seq.length
+
+let positiveNumbers = Seq.unfold (fun n -> Some(n, n + 1I)) 1I
